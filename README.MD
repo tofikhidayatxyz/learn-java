@@ -1,2 +1,14 @@
-# This for java learning
-## The code is on another  branch
+# Stack
+
+## Implemented stack function
+
+### Functions
+
+- View playlist
+- Add playlist
+  - Automatic index
+  - Custom index
+- Delete playlist
+  - Delete first playlist
+  - Delete playlist by keyword [title, owner, id]
+- Delete all Playlist
