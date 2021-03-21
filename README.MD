@@ -1,2 +1,3 @@
-# This for java learning
-## The code is on another  branch
+# Task 1
+
+# Array in java
