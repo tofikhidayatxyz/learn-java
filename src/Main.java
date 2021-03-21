@@ -12,14 +12,15 @@ public class Main {
         // run seeders
         playlist.runSeed();
         // action
-        while (prompt < 7 && prompt > 0) {
+        while (prompt > 0 && prompt < 7) {
             System.out.println("========  Daftar menu =======");
             System.out.println("1. Tampilkan Data Playlist");
-            System.out.println("2. Tambah Data Playlist");;
+            System.out.println("2. Tambah Data Playlist");
             System.out.println("3. Hapus Data Playlist");
             System.out.println("4. Hapus semua Playlist");
 
             System.out.print("\nPilih menu : ");
+
             try {
                 prompt = Integer.parseInt(scan.nextLine());
             } catch(Exception e) {
@@ -28,23 +29,13 @@ public class Main {
             }
 
             switch (prompt) {
-                case 1 :
-                    playlist.viewAll();
-                    break;
-                case 2 :
-                    playlist.storePlaylist(scan);
-                    break;
-                case 3:
-                    playlist.deletePlaylist(scan);
-                    break;
-                case 4:
-                    playlist.deleteAll(scan);
-                    break;
-                default:
-                    System.out.println("========  End program  ======== ");
-                    prompt = 0;
+                case 1 -> playlist.viewAll();
+                case 2 -> playlist.storePlaylist(scan);
+                case 3 -> playlist.deletePlaylist(scan);
+                case 4 -> playlist.deleteAll(scan);
+                default -> prompt = 0;
             }
         }
-
+        System.out.println("========  End program  ======== ");
     }
 }

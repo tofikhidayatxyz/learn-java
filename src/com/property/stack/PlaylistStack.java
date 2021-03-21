@@ -4,7 +4,7 @@ import java.util.Stack;
 import com.property.model.Playlist;
 
 public class PlaylistStack {
-    public Stack<Playlist> playlists = new Stack<Playlist>();
+    public Stack<Playlist> playlists = new Stack<>();
 
     // find playlist
     public Playlist findPlaylist(String keyword) {
@@ -12,12 +12,14 @@ public class PlaylistStack {
             Playlist currentPlaylist = this.playlists.get(i);
             currentPlaylist.id = i;
             try {
-                if(currentPlaylist.title.toLowerCase().equals(keyword.toLowerCase())
-                        || currentPlaylist.owner.toLowerCase().equals(keyword.toLowerCase())
+                if(currentPlaylist.title.equalsIgnoreCase(keyword.toLowerCase())
+                        || currentPlaylist.owner.equalsIgnoreCase(keyword.toLowerCase())
                         || (Integer.parseInt(keyword) - 1) == i) {
                     return currentPlaylist;
                 }
-            } catch(Exception e) {}
+            } catch(Exception e) {
+                // empty
+            }
         }
         return null;
     }
