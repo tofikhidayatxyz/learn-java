@@ -1,5 +1,7 @@
 # Stack
 
+# IDE IntelliJ IDEA
+
 ## Implemented stack function
 
 ### Functions
