@@ -4,6 +4,7 @@
 
 ## Implemented stack function
 
+
 ### Functions
 
 - View queue
@@ -12,3 +13,8 @@
     - Delete first queue
     - Delete queue by keyword [title, owner, id]
 - Delete all queue
+
+
+### Note
+- Working directory on src folder
+- Development using JDK 16
