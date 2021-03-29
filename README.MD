@@ -18,4 +18,4 @@
 ### Note
 - Working directory on src folder
 - Development using JDK 16
-- Can run on replit too
+- Canot run on replit because replit is using jdk 11
