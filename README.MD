@@ -18,3 +18,4 @@
 ### Note
 - Working directory on src folder
 - Development using JDK 16
+- Can run on replit too
