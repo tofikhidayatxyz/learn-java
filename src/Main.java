@@ -1,11 +1,9 @@
-import java.util.ArrayList;
 import java.util.Arrays;
-
 import sort.MagicSort;
 
 public class Main {
     public static void main(String[] args) {
-        Integer sourceData[] = {10, 11, 2, 3, 5, 7, 3, 1};
+        Integer sourceData[] = {1,2,3,4,5,6,7,8,9};
         MagicSort magicSort = new MagicSort(sourceData);
 
         // Normal ascending
@@ -24,7 +22,6 @@ public class Main {
         System.out.println("Execution Time : " + normalDesc.getExecutionTime(false) + " Nano Second");
         System.out.println("===========================");
 
-
         // Auto ascending
         System.out.println("Auto Ascending");
         MagicSort autoAsc = magicSort.autoAsc();
@@ -33,7 +30,6 @@ public class Main {
         System.out.println("Execution Time : " + autoAsc.getExecutionTime(false) + " Nano Second");
         System.out.println("===========================");
 
-
         // Auto ascending
         System.out.println("Auto Descending");
         MagicSort autoDesc = magicSort.autoDesc();
@@ -41,8 +37,5 @@ public class Main {
         System.out.println("Swapped        : " + autoDesc.getTotalSwaped());
         System.out.println("Execution Time : " + autoDesc.getExecutionTime(false) + " Nano Second");
         System.out.println("===========================");
-
-
-
     }
 }

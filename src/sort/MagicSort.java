@@ -5,10 +5,10 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class MagicSort {
-    Integer toBeSort[] = {};
-    Integer resultSort[] = {};
-    long countSwap = 0;
-    long executionTime = 0;
+    private Integer toBeSort[] = {};
+    private Integer resultSort[] = {};
+    private long countSwap = 0;
+    private long executionTime = 0;
 
     public MagicSort(Integer toBeSort[]) {
         this.toBeSort = toBeSort;
@@ -38,7 +38,9 @@ public class MagicSort {
             manipulate[minIdx] = manipulate[i];
             // swap 2
             manipulate[i] = tempArr;
-            this.countSwap = this.countSwap + 2;
+            if(manipulate[i] != this.toBeSort[i]) {
+                this.countSwap = this.countSwap + 2;
+            }
         }
         this.resultSort = manipulate;
         long endTime = System.nanoTime();
