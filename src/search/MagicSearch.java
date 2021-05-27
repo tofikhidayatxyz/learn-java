@@ -1,8 +1,6 @@
 package search;
 
 import java.util.ArrayList;
-import java.util.Locale;
-
 import search.contexts.SearchContext;
 import search.models.User;
 

@@ -1,7 +1,6 @@
 package search;
 
 import search.contexts.NumberSearchContext;
-
 import java.util.ArrayList;
 
 public class MagicNumberSearch {
