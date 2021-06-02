@@ -44,7 +44,7 @@ public class Main {
         System.out.println("\n====== Cari berdasarkan kata indonesia ======");
 
         String keyWord2 = "bangun";
-        Word customSearch2 = search.searchFromIndonesia(0, search.words.size(), keyWord1);
+        Word customSearch2 = search.searchFromIndonesia(0, search.words.size(), keyWord2);
 
         if(customSearch2 != null) {
             printWord(customSearch2, keyWord2);
