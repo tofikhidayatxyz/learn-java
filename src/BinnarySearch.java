@@ -11,17 +11,21 @@ public class BinnarySearch {
 
     public Word searchFromEnglish(Integer first, Integer last, String key) {
 
-        if(last >= first && last < this.words.size()) {
+        if(last >= first) {
             Integer mid =  first + (last - first)/2;
 
-            if(this.words.get(mid).english.equalsIgnoreCase(key)) {
-                return this.words.get(mid);
-            }
+            try {
+                if(this.words.get(mid).english.equalsIgnoreCase(key)) {
+                    return this.words.get(mid);
+                }
 
-            if(this.words.get(mid).english.length() > key.length()) {
-                return searchFromEnglish(first, mid - 1, key);
-            } else {
-                return searchFromEnglish(mid+1, last, key);
+                if(this.words.get(mid).english.length() > key.length()) {
+                    return searchFromEnglish(first, mid - 1, key);
+                } else {
+                    return searchFromEnglish(mid+1, last, key);
+                }
+            } catch(IndexOutOfBoundsException e) {
+                // empty
             }
         }
 
@@ -30,18 +34,22 @@ public class BinnarySearch {
 
     public Word searchFromIndonesia(Integer first, Integer last, String key) {
 
-        if(last >= first && last < this.words.size()) {
+        if(last >= first) {
             Integer mid =  first + (last - first)/2;
 
-            if(this.words.get(mid).indonesia.equalsIgnoreCase(key)) {
-                return this.words.get(mid);
-            }
+           try {
+               if(this.words.get(mid).indonesia.equalsIgnoreCase(key)) {
+                   return this.words.get(mid);
+               }
 
-            if(this.words.get(mid).indonesia.length() > key.length()) {
-                return searchFromEnglish(first, mid - 1, key);
-            } else {
-                return searchFromEnglish(mid+1, last, key);
-            }
+               if(this.words.get(mid).indonesia.length() > key.length()) {
+                   return searchFromEnglish(first, mid - 1, key);
+               } else {
+                   return searchFromEnglish(mid+1, last, key);
+               }
+           } catch(IndexOutOfBoundsException e) {
+               // empty
+           }
         }
 
         return null;
