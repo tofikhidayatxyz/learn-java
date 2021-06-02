@@ -1,8 +1,9 @@
-IDE: Intelij Idea
+IDE: Intelij Idea<br>
 Note: Please use jdk ^16
-
-Example Result
-
+<br>
+<br>
+Example Result :
+<br>
 ====== Cari berdasarkan kata inggris ====== <br>
 Kata 'wakeup' Di temukan<br>
 English : wakeup<br>
