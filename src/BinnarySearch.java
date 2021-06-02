@@ -11,7 +11,7 @@ public class BinnarySearch {
 
     public Word searchFromEnglish(Integer first, Integer last, String key) {
 
-        if(last >= first) {
+        if(last >= first && last < this.words.size()) {
             Integer mid =  first + (last - first)/2;
 
             if(this.words.get(mid).english.equalsIgnoreCase(key)) {
@@ -30,7 +30,7 @@ public class BinnarySearch {
 
     public Word searchFromIndonesia(Integer first, Integer last, String key) {
 
-        if(last >= first) {
+        if(last >= first && last < this.words.size()) {
             Integer mid =  first + (last - first)/2;
 
             if(this.words.get(mid).indonesia.equalsIgnoreCase(key)) {
