@@ -43,9 +43,9 @@ public class BinnarySearch {
                }
 
                if(this.words.get(mid).indonesia.length() > key.length()) {
-                   return searchFromEnglish(first, mid - 1, key);
+                   return searchFromIndonesia(first, mid - 1, key);
                } else {
-                   return searchFromEnglish(mid+1, last, key);
+                   return searchFromIndonesia(mid+1, last, key);
                }
            } catch(IndexOutOfBoundsException e) {
                // empty
