@@ -1,22 +1,21 @@
-package matrix;
+package matrix.hillchiper;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class HillChipper {
+public class Encrypt {
     final String privateKey = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 \n\t";
     final String zeroKeyCode = "F";
     final String randomKey[] = {"A", "B", "C", "D", "E"};
     final Integer encryptKeyPair[][] = {
-        {2,3},
-        {1,2}
+            {2,3},
+            {1,2}
     };
 
     public String getKeyPairIndex(String keyText) {
         String splitedKey[] = this.privateKey.split("");
         for (int i = 0; i < splitedKey.length; i++) {
             if(((String) splitedKey[i]).equals(keyText)) {
-                return "" + i;
+                return "" + (i + 1);
             }
         }
         return keyText;
@@ -69,16 +68,22 @@ public class HillChipper {
         mapedParsedMatrix.add(new ArrayList<>());
         mapedParsedMatrix.add(new ArrayList<>());
 
+
+
         for(Integer value : mapedMatrix.get(0)) {
             mapedParsedMatrix.get(0).add(value * encryptKeyPair[0][0]);
             mapedParsedMatrix.get(1).add(value * encryptKeyPair[1][0]);
         }
-        for(int key = 0; key < mapedMatrix.get(1).size(); key++) {
-            Integer value = mapedParsedMatrix.get(1).get(key);
 
+
+
+
+        for(int key = 0; key < mapedMatrix.get(1).size(); key++) {
+            Integer value = mapedMatrix.get(1).get(key);
             mapedParsedMatrix.get(0).set(key, mapedParsedMatrix.get(0).get(key) + (value * encryptKeyPair[0][1]));
             mapedParsedMatrix.get(1).set(key, mapedParsedMatrix.get(1).get(key) + (value * encryptKeyPair[1][1]));
         }
+
 
         ArrayList<Integer> listingMatrix = new ArrayList<>();
         listingMatrix.addAll(mapedParsedMatrix.get(0));
@@ -87,8 +92,9 @@ public class HillChipper {
         ArrayList<String> fileToKeyMap = new ArrayList<>();
 
         for(Integer x : listingMatrix) {
-            fileToKeyMap.add(generateSignatureKey(""+ getKeyPairIndex("" + x)));
+            fileToKeyMap.add(generateSignatureKey("" + x));
         }
+
 
         return String.join("", fileToKeyMap);
     }

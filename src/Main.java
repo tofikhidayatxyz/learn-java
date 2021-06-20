@@ -1,6 +1,8 @@
+import matrix.HillChipper;
 import matrix.Opration;
+import matrix.hillchiper.Decrypt;
+import matrix.hillchiper.Encrypt;
 
-import java.util.Arrays;
 
 public class Main {
 
@@ -27,6 +29,18 @@ public class Main {
         System.out.println("----- Invers Matrix ----- ");
         opration.inverse(opration.getOprationResult());
         printMatrix(opration.getInversResult());
+
+
         System.out.println("----- Hill Chipper ----- ");
+
+
+        Encrypt encrypt = new Encrypt();
+        Decrypt decrypt = new Decrypt();
+        String masterText = "Tofik hidayat";
+        System.out.println("Text before encrypt : " + masterText);
+        String encryptedResult = encrypt.encrypt(masterText);
+        System.out.println("Text after encrypt : " + encryptedResult);
+        String decryptedResult = decrypt.decrypt(encryptedResult);
+        System.out.println("Text after decrypt : " + decryptedResult);
     }
 }

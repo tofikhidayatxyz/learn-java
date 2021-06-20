@@ -1,47 +1,29 @@
-package matrix;
+package matrix.hillchiper;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
-public class HillChipper {
+public class Decrypt {
     final String privateKey = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 \n\t";
-    final String zeroKeyCode = "F";
-    final String randomKey[] = {"A", "B", "C", "D", "E"};
+
     final Integer encryptKeyPair[][] = {
-        {2,3},
-        {1,2}
+            {2, -3},
+            {-1, 2}
     };
 
-    public String getKeyPairIndex(String keyText) {
-        String splitedKey[] = this.privateKey.split("");
-        for (int i = 0; i < splitedKey.length; i++) {
-            if(((String) splitedKey[i]).equals(keyText)) {
-                return "" + i;
-            }
-        }
-        return keyText;
+    public String getAlphabet(Integer num) {
+        return privateKey.split("")[num - 1];
     }
 
-    public String generateRandomKey(Integer length) {
-        String keyResult = "";
-        for(int i = 1; i <=  length; i++) {
-            keyResult += this.randomKey[(int) (Math.floor(Math.random() * (this.randomKey.length - 1)) + 1)];
-        }
-        return  keyResult;
-    }
-
-    public String generateSignatureKey(String keyText) {
-        String resultText = keyText.replaceAll("0", this.zeroKeyCode);
-        if(resultText.length() < 4) {
-            return "" + generateRandomKey(4 - keyText.length()) + resultText;
-        }
-        return resultText;
+    public String parseFileToNumber(String fileText) {
+        fileText = fileText.replace("F", "0");
+        return fileText.replaceAll("\\D", "");
     }
 
 
-    public String encrypt(String source) {
+    public String decrypt(String source) {
 
-        String fileToArray[] = source.split("");
+        String fileToArray[] = source.split("(?<=\\G.{4})");
         ArrayList<ArrayList<Integer>> mapedMatrix = new ArrayList<>();
         mapedMatrix.add(new ArrayList<>());
         mapedMatrix.add(new ArrayList<>());
@@ -49,12 +31,14 @@ public class HillChipper {
         ArrayList<Integer> fileToNum = new ArrayList<>();
 
         for(String ar : fileToArray) {
-            fileToNum.add(Integer.parseInt(getKeyPairIndex(ar)));
+            fileToNum.add(Integer.parseInt(parseFileToNumber(ar)));
         }
+
 
         if(fileToNum.size() % 2 == 1) {
             fileToNum.add(privateKey.length() - 1);
         }
+
 
 
         for(int key = 0; key < fileToNum.size(); key++) {
@@ -73,12 +57,13 @@ public class HillChipper {
             mapedParsedMatrix.get(0).add(value * encryptKeyPair[0][0]);
             mapedParsedMatrix.get(1).add(value * encryptKeyPair[1][0]);
         }
-        for(int key = 0; key < mapedMatrix.get(1).size(); key++) {
-            Integer value = mapedParsedMatrix.get(1).get(key);
 
+        for(int key = 0; key < mapedMatrix.get(1).size(); key++) {
+            Integer value = mapedMatrix.get(1).get(key);
             mapedParsedMatrix.get(0).set(key, mapedParsedMatrix.get(0).get(key) + (value * encryptKeyPair[0][1]));
             mapedParsedMatrix.get(1).set(key, mapedParsedMatrix.get(1).get(key) + (value * encryptKeyPair[1][1]));
         }
+
 
         ArrayList<Integer> listingMatrix = new ArrayList<>();
         listingMatrix.addAll(mapedParsedMatrix.get(0));
@@ -87,7 +72,7 @@ public class HillChipper {
         ArrayList<String> fileToKeyMap = new ArrayList<>();
 
         for(Integer x : listingMatrix) {
-            fileToKeyMap.add(generateSignatureKey(""+ getKeyPairIndex("" + x)));
+            fileToKeyMap.add(getAlphabet(x));
         }
 
         return String.join("", fileToKeyMap);
