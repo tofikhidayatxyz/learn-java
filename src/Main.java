@@ -1,4 +1,3 @@
-import matrix.HillChipper;
 import matrix.Opration;
 import matrix.hillchiper.Decrypt;
 import matrix.hillchiper.Encrypt;
